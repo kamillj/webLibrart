@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="pl.kamilj.webLibrary.domain.entity.Account" table="ACCOUNT">
+        <id name="id" type="java.lang.Long">
+            <column name="ACCOUNT_ID"/>
+            <generator class="native"/>
+        </id>
+
+        <property name="firstName" type="java.lang.String">
+            <column name="FIRST_NAME" not-null="false"/>
+        </property>
+
+        <property name="lastName" type="java.lang.String">
+            <column name="LAST_NAME" not-null="false"/>
+        </property>
+
+        <property name="birthdate" type="java.util.Date">
+            <column name="BIRTHDATE" not-null="false"/>
+        </property>
+    </class>
+</hibernate-mapping>

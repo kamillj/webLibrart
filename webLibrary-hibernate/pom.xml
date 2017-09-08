@@ -7,15 +7,20 @@
         <groupId>kamilj.pl</groupId>
         <version>1.0</version>
     </parent>
-
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>webLibrary-application</artifactId>
-
+    <artifactId>webLibrary-hibernate</artifactId>
     <dependencies>
         <dependency>
             <groupId>kamilj.pl</groupId>
-            <artifactId>webLibrary-hibernate</artifactId>
+            <artifactId>webLibrary-domain</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
         </dependency>
     </dependencies>
+
+
 </project>

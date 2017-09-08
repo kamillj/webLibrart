@@ -11,10 +11,3 @@
 # Maven
 /target/
 .gitignore
-webLibrary-application/src/
-webLibrary-application/webLibrary-application.iml
-webLibrary-domain/src/
-webLibrary-domain/webLibrary-domain.iml
-webLibrary-service/src/
-webLibrary-service/webLibrary-service.iml
-webLibrary.iml

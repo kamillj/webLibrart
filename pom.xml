@@ -8,11 +8,67 @@
     <artifactId>pl.kamilj.webLibrary</artifactId>
     <packaging>pom</packaging>
     <version>1.0</version>
+
+    <properties>
+        <project-version>1.0</project-version>
+        <project-build-sourceEncoding>UTF-8</project-build-sourceEncoding>
+        <project-build-java-target>1.8</project-build-java-target>
+
+        <hibernate-core-version>5.2.10.Final</hibernate-core-version>
+        <mysql-connector-java>6.0.6</mysql-connector-java>
+    </properties>
+
     <modules>
         <module>webLibrary-application</module>
         <module>webLibrary-domain</module>
         <module>webLibrary-service</module>
+        <module>webLibrary-hibernate</module>
     </modules>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.1</version>
+                <configuration>
+                    <encoding>${project-build-sourceEncoding}</encoding>
+                    <source>${project-build-java-target}</source>
+                    <target>${project-build-java-target}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- internal application modules -->
+            <dependency>
+                <groupId>kamilj.pl</groupId>
+                <artifactId>webLibrary-domain</artifactId>
+                <version>${project-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>kamilj.pl</groupId>
+                <artifactId>webLibrary-hibernate</artifactId>
+                <version>${project-version}</version>
+            </dependency>
+
+            <!-- hibernate -->
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>${hibernate-core-version}</version>
+            </dependency>
+
+            <!-- MySQL Connector-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector-java}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
 </project>
