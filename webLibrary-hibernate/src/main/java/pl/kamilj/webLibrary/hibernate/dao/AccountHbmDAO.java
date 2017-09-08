@@ -10,22 +10,32 @@ import java.util.List;
 public class AccountHbmDAO {
 
     public void create(Account account) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = null;
         try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             session.save(account);
             transaction.commit();
         } catch (Exception exception) {
             if (transaction != null) {
                 transaction.rollback();
-            } throw new RuntimeException("Cannot creat Account");
+            }
+            throw new RuntimeException("Cannot create Account");
         }
-
     }
 
     public Account findById(Long id) {
-        throw new UnsupportedOperationException("This operation is not yet implemented");
+
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            Account account = session.get(Account.class, id);
+            session.getTransaction().commit();
+
+            return account;
+        } catch (Exception exception) {
+            throw new RuntimeException("Cannot find Account");
+        }
     }
 
     public List<Account> findAll() {

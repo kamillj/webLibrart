@@ -15,7 +15,7 @@ public class Application {
         new Application().run();
     }
 
-    public void run() {
+    private void run() {
         Account kowalski = new Account("Jan", "Kowalski", DateUtil.convertToDate(LocalDate.of(1990, 07, 30)));
         Account nowak = new Account("Grażyna", "Nowak", DateUtil.convertToDate(LocalDate.of(1994, 06, 30)));
         Account kwiatkowski = new Account("Andrzej", "Kwiatkowski", DateUtil.convertToDate(LocalDate.of(1988, 10, 06)));
