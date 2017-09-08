@@ -4,7 +4,6 @@ import pl.kamilj.webLibrary.application.util.DateUtil;
 import pl.kamilj.webLibrary.domain.entity.Account;
 import pl.kamilj.webLibrary.hibernate.dao.AccountHbmDAO;
 import pl.kamilj.webLibrary.hibernate.util.HibernateUtil;
-
 import java.time.LocalDate;
 
 public class Application {

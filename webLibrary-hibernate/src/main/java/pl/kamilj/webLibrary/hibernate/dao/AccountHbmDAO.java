@@ -20,12 +20,11 @@ public class AccountHbmDAO {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new RuntimeException("Cannot create Account");
+            throw new RuntimeException("Cannot create Account", exception);
         }
     }
 
     public Account findById(Long id) {
-
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
@@ -34,12 +33,20 @@ public class AccountHbmDAO {
 
             return account;
         } catch (Exception exception) {
-            throw new RuntimeException("Cannot find Account");
+            throw new RuntimeException("Error when retrieving Account", exception);
         }
     }
 
     public List<Account> findAll() {
-        throw new UnsupportedOperationException("This operation is not yet implemented");
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            List<Account> accounts = session.createQuery("FROM Account", Account.class).getResultList();
+            session.getTransaction().commit();
 
+            return accounts;
+        } catch (Exception exception) {
+            throw new RuntimeException("Error when retrieving Accounts", exception);
+        }
     }
 }
