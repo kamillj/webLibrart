@@ -1,15 +1,20 @@
 package pl.kamilj.webLibrary.domain.entity;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "ACCOUNT")
 public class Account {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ACCOUNT_ID")
     private Long id;
-
+    @Column(name ="FIRST_NAME")
     private String firstName;
-
+    @Column(name = "LAST_NAME")
     private String lastName;
-
+    @Column(name = "BIRTHDAY")
     private Date birthdate;
 
 

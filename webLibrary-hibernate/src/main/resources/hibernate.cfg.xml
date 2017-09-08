@@ -9,6 +9,6 @@
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="dialect">org.hibernate.dialect.MySQL57Dialect</property>
 
-        <mapping resource="account.hbm.xml"/>
+        <mapping class="pl.kamilj.webLibrary.domain.entity.Account"/>
     </session-factory>
 </hibernate-configuration>
