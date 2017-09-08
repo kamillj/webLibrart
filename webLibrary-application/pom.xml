@@ -11,11 +11,20 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>webLibrary-application</artifactId>
+    <packaging>war</packaging>
 
     <dependencies>
         <dependency>
             <groupId>kamilj.pl</groupId>
             <artifactId>webLibrary-hibernate</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
         </dependency>
     </dependencies>
 </project>

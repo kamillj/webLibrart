@@ -16,6 +16,8 @@
 
         <hibernate-core-version>5.2.10.Final</hibernate-core-version>
         <mysql-connector-java>6.0.6</mysql-connector-java>
+        <spring-version>4.3.10.RELEASE</spring-version>
+        <javax-servlet-version>3.1.0</javax-servlet-version>
     </properties>
 
     <modules>
@@ -43,7 +45,7 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- internal application modules -->
+            <!-- Internal application modules -->
             <dependency>
                 <groupId>kamilj.pl</groupId>
                 <artifactId>webLibrary-domain</artifactId>
@@ -55,7 +57,7 @@
                 <version>${project-version}</version>
             </dependency>
 
-            <!-- hibernate -->
+            <!-- Hibernate -->
             <dependency>
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-core</artifactId>
@@ -67,6 +69,20 @@
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql-connector-java}</version>
+            </dependency>
+
+            <!-- Spring -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+
+            <!-- Javax -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${javax-servlet-version}</version>
             </dependency>
 
         </dependencies>
