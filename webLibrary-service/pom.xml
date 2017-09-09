@@ -11,5 +11,18 @@
 
     <artifactId>webLibrary-service</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>kamilj.pl</groupId>
+            <artifactId>webLibrary-hibernate</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+        </dependency>
+    </dependencies>
 </project>

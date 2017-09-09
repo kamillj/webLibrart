@@ -18,6 +18,7 @@
         <mysql-connector-java>6.0.6</mysql-connector-java>
         <spring-version>4.3.10.RELEASE</spring-version>
         <javax-servlet-version>3.1.0</javax-servlet-version>
+        <jstl-version>1.2</jstl-version>
     </properties>
 
     <modules>
@@ -56,6 +57,11 @@
                 <artifactId>webLibrary-hibernate</artifactId>
                 <version>${project-version}</version>
             </dependency>
+            <dependency>
+                <groupId>kamilj.pl</groupId>
+                <artifactId>webLibrary-service</artifactId>
+                <version>${project-version}</version>
+            </dependency>
 
             <!-- Hibernate -->
             <dependency>
@@ -77,12 +83,29 @@
                 <artifactId>spring-webmvc</artifactId>
                 <version>${spring-version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-orm</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
 
             <!-- Javax -->
             <dependency>
                 <groupId>javax.servlet</groupId>
                 <artifactId>javax.servlet-api</artifactId>
                 <version>${javax-servlet-version}</version>
+            </dependency>
+
+            <!-- Jstl -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>jstl</artifactId>
+                <version>${jstl-version}</version>
             </dependency>
 
         </dependencies>

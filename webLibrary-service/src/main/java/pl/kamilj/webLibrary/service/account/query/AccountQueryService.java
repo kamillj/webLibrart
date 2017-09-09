@@ -1,11 +1,10 @@
-package pl.kamilj.webLibrary.hibernate.dao;
+package pl.kamilj.webLibrary.service.account.query;
 
 import pl.kamilj.webLibrary.domain.entity.Account;
 import java.util.List;
 
-public interface AccountHbmDAO {
+public interface AccountQueryService {
 
-    void create(Account account);
     Account findById(Long id);
     List<Account> findAll();
 }
