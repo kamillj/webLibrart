@@ -22,4 +22,9 @@ public class AccountCommandServiceImpl implements AccountCommandService {
     public void create(Account account) {
         accountHbmDAO.create(account);
     }
+
+    @Override
+    public void delete(Long accountId) {
+        accountHbmDAO.delete(accountId);
+    }
 }

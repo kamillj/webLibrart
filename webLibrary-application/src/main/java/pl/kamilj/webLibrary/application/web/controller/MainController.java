@@ -5,10 +5,7 @@ import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import pl.kamilj.webLibrary.domain.entity.Account;
 import pl.kamilj.webLibrary.service.account.command.AccountCommandService;
 import pl.kamilj.webLibrary.service.account.query.AccountQueryService;
@@ -47,7 +44,12 @@ public class MainController {
         if (account.getId() == null) {
             accountCommandService.create(account);
         }
+        return "redirect:/main";
+    }
 
+    @RequestMapping(value = "/account/delete/{id}", method = RequestMethod.GET)
+    public String deleteAccount(@PathVariable("id") String accountId){
+        accountCommandService.delete(Long.valueOf(accountId));
         return "redirect:/main";
     }
 }

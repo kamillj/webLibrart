@@ -8,15 +8,16 @@ import org.springframework.stereotype.Repository;
 import pl.kamilj.webLibrary.domain.entity.Account;
 import pl.kamilj.webLibrary.hibernate.dao.AccountHbmDAO;
 import pl.kamilj.webLibrary.hibernate.util.HibernateUtil;
+
 import java.util.List;
 
 @Repository
-public class AccountHbmDAOImpl implements AccountHbmDAO{
+public class AccountHbmDAOImpl implements AccountHbmDAO {
 
     private final SessionFactory sessionFactory;
 
     @Autowired
-    public AccountHbmDAOImpl(SessionFactory sessionFactory){
+    public AccountHbmDAOImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
@@ -32,6 +33,18 @@ public class AccountHbmDAOImpl implements AccountHbmDAO{
                 transaction.rollback();
             }
             throw new RuntimeException("Cannot create Account", exception);
+        }
+    }
+
+    @Override
+    public void delete(Long accountId) {
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.delete(findById(accountId));
+            session.getTransaction().commit();
+        } catch (Exception exception){
+            throw new RuntimeException("Error when deleting Account", exception);
         }
     }
 

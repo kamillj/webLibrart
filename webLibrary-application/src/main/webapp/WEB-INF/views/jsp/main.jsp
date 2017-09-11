@@ -45,6 +45,7 @@
                     <td>${account.firstName}</td>
                     <td>${account.lastName}</td>
                     <td>${account.birthday}</td>
+                    <td><a href="<c:url value='/account/delete/${account.id}'/>">Delete</a></td>
                 </tr>
             </c:forEach>
         </c:when>
