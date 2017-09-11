@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import pl.kamilj.webLibrary.domain.entity.Account;
 import pl.kamilj.webLibrary.service.account.command.AccountCommandService;
 import pl.kamilj.webLibrary.service.account.query.AccountQueryService;
 
@@ -25,7 +24,6 @@ public class MainController{
     @RequestMapping(value = "/main", method = RequestMethod.GET)
     public String welcome(Model model){
         model.addAttribute("accounts", accountQueryService.findAll());
-        model.addAttribute("account", new Account());
         return "main";
     }
 }
