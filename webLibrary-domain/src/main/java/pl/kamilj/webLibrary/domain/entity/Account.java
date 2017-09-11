@@ -15,16 +15,17 @@ public class Account {
     @Column(name = "LAST_NAME")
     private String lastName;
     @Column(name = "BIRTHDAY")
-    private Date birthdate;
+    @Temporal(TemporalType.DATE)
+    private Date birthday;
 
 
     public Account() {
     }
 
-    public Account(String firstName, String lastName, Date birthdate) {
+    public Account(String firstName, String lastName, Date birthday) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.birthdate = birthdate;
+        this.birthday = birthday;
     }
 
     public Long getId() {
@@ -51,11 +52,11 @@ public class Account {
         this.lastName = lastName;
     }
 
-    public Date getBirthdate() {
-        return birthdate;
+    public Date getBirthday() {
+        return birthday;
     }
 
-    public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
+    public void setBirthday(Date birthdate) {
+        this.birthday = birthdate;
     }
 }
