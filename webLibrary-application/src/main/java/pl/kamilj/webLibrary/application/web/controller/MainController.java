@@ -1,5 +1,7 @@
 package pl.kamilj.webLibrary.application.web.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,8 @@ import java.util.Date;
 
 @Controller
 public class MainController {
+
+    Logger logger = LoggerFactory.getLogger(MainController.class);
 
     private final AccountCommandService accountCommandService;
     private final AccountQueryService accountQueryService;
@@ -34,6 +38,7 @@ public class MainController {
 
     @RequestMapping(value = "/main", method = RequestMethod.GET)
     public String welcome(Model model) {
+        logger.info("is executed!");
         model.addAttribute("accounts", accountQueryService.findAll());
         model.addAttribute("accountForm", new Account());
         return "main";
@@ -41,6 +46,7 @@ public class MainController {
 
     @RequestMapping(value = "/account/save", method = RequestMethod.POST)
     public String saveAccount(@ModelAttribute("accountForm") Account account) {
+        logger.info("is executed!");
         if (account.getId() == null) {
             accountCommandService.create(account);
         }
@@ -49,6 +55,7 @@ public class MainController {
 
     @RequestMapping(value = "/account/delete/{id}", method = RequestMethod.GET)
     public String deleteAccount(@PathVariable("id") String accountId){
+        logger.info("is executed!");
         accountCommandService.delete(Long.valueOf(accountId));
         return "redirect:/main";
     }
