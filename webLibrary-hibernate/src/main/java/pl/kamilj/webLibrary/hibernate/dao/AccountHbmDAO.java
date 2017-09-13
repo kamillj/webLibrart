@@ -6,6 +6,7 @@ import java.util.List;
 public interface AccountHbmDAO {
 
     void create(Account account);
+    void update(Account account);
     void delete(Long accountId);
     Account findById(Long id);
     List<Account> findAll();

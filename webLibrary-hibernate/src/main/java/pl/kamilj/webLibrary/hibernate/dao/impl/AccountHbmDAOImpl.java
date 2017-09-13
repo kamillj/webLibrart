@@ -9,8 +9,10 @@ import pl.kamilj.webLibrary.domain.entity.Account;
 import pl.kamilj.webLibrary.hibernate.dao.AccountHbmDAO;
 import pl.kamilj.webLibrary.hibernate.util.HibernateUtil;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
+@Transactional
 @Repository
 public class AccountHbmDAOImpl implements AccountHbmDAO {
 
@@ -22,55 +24,34 @@ public class AccountHbmDAOImpl implements AccountHbmDAO {
     }
 
     public void create(Account account) {
-        Transaction transaction = null;
-        try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            transaction = session.beginTransaction();
-            session.save(account);
-            transaction.commit();
-        } catch (Exception exception) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            throw new RuntimeException("Cannot create Account", exception);
-        }
+        Session session = sessionFactory.getCurrentSession();
+        session.save(account);
+    }
+
+    @Override
+    public void update(Account account) {
+
+        Session session = sessionFactory.getCurrentSession();
+        session.update(account);
     }
 
     @Override
     public void delete(Long accountId) {
-        try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            session.delete(findById(accountId));
-            session.getTransaction().commit();
-        } catch (Exception exception){
-            throw new RuntimeException("Error when deleting Account", exception);
-        }
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(findById(accountId));
     }
 
     public Account findById(Long id) {
-        try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            Account account = session.get(Account.class, id);
-            session.getTransaction().commit();
-
-            return account;
-        } catch (Exception exception) {
-            throw new RuntimeException("Error when retrieving Account", exception);
-        }
+        Session session = sessionFactory.getCurrentSession();
+        Account account = session.get(Account.class, id);
+        return account;
     }
 
     public List<Account> findAll() {
-        try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            session.beginTransaction();
-            List<Account> accounts = session.createQuery("FROM Account", Account.class).getResultList();
-            session.getTransaction().commit();
+        Session session = sessionFactory.getCurrentSession();
+        List<Account> accounts = session.createQuery("FROM Account", Account.class).getResultList();
 
-            return accounts;
-        } catch (Exception exception) {
-            throw new RuntimeException("Error when retrieving Accounts", exception);
-        }
+        return accounts;
     }
 }
+

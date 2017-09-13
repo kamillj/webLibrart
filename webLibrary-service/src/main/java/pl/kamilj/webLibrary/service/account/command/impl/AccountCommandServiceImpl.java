@@ -14,13 +14,23 @@ public class AccountCommandServiceImpl implements AccountCommandService {
     private AccountHbmDAO accountHbmDAO;
 
     @Autowired
-    public AccountCommandServiceImpl(AccountHbmDAO accountHbmDAO){
+    public AccountCommandServiceImpl(AccountHbmDAO accountHbmDAO) {
         this.accountHbmDAO = accountHbmDAO;
     }
 
     @Override
     public void create(Account account) {
         accountHbmDAO.create(account);
+    }
+
+    @Override
+    public void update(Account account) {
+        Account dbAccount = accountHbmDAO.findById(account.getId());
+        dbAccount.setId(account.getId());
+        dbAccount.setFirstName(account.getFirstName());
+        dbAccount.setLastName(account.getLastName());
+        dbAccount.setBirthday(account.getBirthday());
+        accountHbmDAO.update(dbAccount);
     }
 
     @Override

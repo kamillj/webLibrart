@@ -22,7 +22,8 @@ public class Account {
     public Account() {
     }
 
-    public Account(String firstName, String lastName, Date birthday) {
+    public Account(Long id, String firstName, String lastName, Date birthday) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthday = birthday;
@@ -56,7 +57,7 @@ public class Account {
         return birthday;
     }
 
-    public void setBirthday(Date birthdate) {
-        this.birthday = birthdate;
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 }

@@ -15,6 +15,9 @@
 <form:form method="POST" modelAttribute="accountForm" action="${saveAction}">
     <table>
         <tr>
+            <td><form:hidden path="id"/></td>
+        </tr>
+        <tr>
             <td><form:label path="firstName">First Name</form:label></td>
             <td><form:input path="firstName"/></td>
         </tr>
@@ -36,7 +39,9 @@
     <tr>
         <th width="200">First Name</th>
         <th width="200">Last Name</th>
-        <th width="210">Birthdate</th>
+        <th width="200">Birthday</th>
+        <th width="75">Edit</th>
+        <th width="75">Delete</th>
     </tr>
     <c:choose>
         <c:when test="${!empty accounts}">
@@ -45,6 +50,7 @@
                     <td>${account.firstName}</td>
                     <td>${account.lastName}</td>
                     <td>${account.birthday}</td>
+                    <td><a href="<c:url value='/account/edit/${account.id}'/>">Edit</a></td>
                     <td><a href="<c:url value='/account/delete/${account.id}'/>">Delete</a></td>
                 </tr>
             </c:forEach>
